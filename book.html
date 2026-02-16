@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Free Consultation | DM Fit Coaching</title>
+  <meta name="description" content="Book a free 15-minute virtual consultation with DM Fit Coaching." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header header--simple" id="siteHeader">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">DM</span>
+        <span class="brand__text">Fit Coaching</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#why">Why</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQs</a>
+        <a href="about.html">About</a>
+        <a class="btn btn--ghost" href="contact.html">Contact</a>
+        <a class="btn btn--primary isActive" href="book.html">Book</a>
+      </nav>
+
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile" id="mobileNav" aria-hidden="true">
+      <div class="container mobile__inner">
+        <a href="index.html#why" class="mobile__link">Why</a>
+        <a href="index.html#how" class="mobile__link">How it works</a>
+        <a href="index.html#faq" class="mobile__link">FAQs</a>
+        <a href="about.html" class="mobile__link">About</a>
+        <a href="contact.html" class="mobile__link">Contact</a>
+        <a class="btn btn--primary mobile__cta" href="book.html">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pageHero">
+      <div class="container">
+        <p class="eyebrow">FREE 15-MIN VIRTUAL CONSULT</p>
+        <h1>Book your consultation</h1>
+        <p class="lead">
+          We’ll cover your goals, current habits, what’s been holding you back, and the simplest next steps.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="embedCard">
+          <h2 class="embedCard__title">Calendly Booking</h2>
+          <p class="micro">
+            Replace the Calendly link below with Diego’s real scheduling link.
+          </p>
+
+          <!-- Option A: iframe (simple) -->
+          <div class="embed">
+            <iframe
+              title="Calendly Booking"
+              src="https://calendly.com/YOUR-CALENDLY-LINK/15min"
+              frameborder="0"
+              scrolling="yes"
+            ></iframe>
+          </div>
+
+          <!-- Option B: official Calendly widget (uncomment if you prefer)
+          <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-CALENDLY-LINK/15min" style="min-width:320px;height:700px;"></div>
+          -->
+        </div>
+
+        <div class="ctaBand ctaBand--tight">
+          <div>
+            <h3>Ready to join after your consult?</h3>
+            <p>$150/month membership • coaching inside Everfit</p>
+          </div>
+          <a class="btn btn--primary" href="contact.html">Ask about signup</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <div class="brand brand--footer">
+          <span class="brand__mark">DM</span>
+          <span class="brand__text">Fit Coaching</span>
+        </div>
+        <p class="micro">Online fitness + nutrition coaching with real accountability.</p>
+      </div>
+
+      <div class="footer__links">
+        <a href="index.html#why">Why</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQs</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer__cta">
+        <a class="btn btn--primary" href="book.html">Book Consultation</a>
+        <p class="micro">© <span id="year"></span> DM Fit Coaching. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

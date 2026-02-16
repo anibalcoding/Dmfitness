@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | DM Fit Coaching</title>
+  <meta name="description" content="Contact DM Fit Coaching. Ask a question or request details about membership." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header header--simple" id="siteHeader">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark">DM</span>
+        <span class="brand__text">Fit Coaching</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#why">Why</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQs</a>
+        <a href="about.html">About</a>
+        <a class="btn btn--ghost isActive" href="contact.html">Contact</a>
+        <a class="btn btn--primary" href="book.html">Start Consultation</a>
+      </nav>
+
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile" id="mobileNav" aria-hidden="true">
+      <div class="container mobile__inner">
+        <a href="index.html#why" class="mobile__link">Why</a>
+        <a href="index.html#how" class="mobile__link">How it works</a>
+        <a href="index.html#faq" class="mobile__link">FAQs</a>
+        <a href="about.html" class="mobile__link">About</a>
+        <a href="contact.html" class="mobile__link">Contact</a>
+        <a class="btn btn--primary mobile__cta" href="book.html">Start Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pageHero">
+      <div class="container">
+        <p class="eyebrow">CONTACT</p>
+        <h1>Ask a question</h1>
+        <p class="lead">Send a message and we’ll get back to you as soon as possible.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="contactGrid">
+          <div class="contactCard">
+            <h2>Message DM Fit Coaching</h2>
+            <p class="micro">This is a front-end form. Connect it to your backend or email service after launch.</p>
+
+            <form class="form" id="contactForm" novalidate>
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@email.com" required />
+              </div>
+
+              <div class="field">
+                <label for="goal">Primary goal</label>
+                <select id="goal" name="goal" required>
+                  <option value="" selected disabled>Select one</option>
+                  <option>Lose 10–20 lbs</option>
+                  <option>Build muscle</option>
+                  <option>Improve energy / lifestyle balance</option>
+                  <option>General fitness guidance</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell us what you're struggling with..." required></textarea>
+              </div>
+
+              <button class="btn btn--primary btn--wide" type="submit">Send message</button>
+              <p class="formMsg" id="contactMsg" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <aside class="contactAside">
+            <div class="card card--flat">
+              <h3>Email</h3>
+              <p><a href="mailto:dmfitness25@gmail.com">dmfitness25@gmail.com</a></p>
+            </div>
+
+            <div class="card card--flat">
+              <h3>Quick start</h3>
+              <p class="micro">Fastest path: book a free consult.</p>
+              <a class="btn btn--primary btn--wide" href="book.html">Book Free Consult</a>
+            </div>
+
+            <div class="card card--flat">
+              <h3>Membership</h3>
+              <p class="micro">$150/month • coaching delivered through Everfit</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <div class="brand brand--footer">
+          <span class="brand__mark">DM</span>
+          <span class="brand__text">Fit Coaching</span>
+        </div>
+        <p class="micro">Online fitness + nutrition coaching with real accountability.</p>
+      </div>
+
+      <div class="footer__links">
+        <a href="index.html#why">Why</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#faq">FAQs</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="footer__cta">
+        <a class="btn btn--primary" href="book.html">Book Consultation</a>
+        <p class="micro">© <span id="year"></span> DM Fit Coaching. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
