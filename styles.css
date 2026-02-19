@@ -195,6 +195,9 @@ img{ max-width: 100%; display:block; }
 .hero{
   padding: 64px 0 36px;
 }
+.highlight{
+  color: #14B8A6;
+}
 .hero__grid{
   display:grid;
   grid-template-columns: 1.15fr .85fr;
