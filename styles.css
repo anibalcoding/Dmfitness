@@ -614,6 +614,65 @@ h1{
   border: 0;
 }
 
+/* Pricing */
+.plansGrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.planCard{
+  display:grid;
+  gap: 10px;
+  align-content:start;
+  padding: 20px;
+  border-radius: calc(var(--radius) + 4px);
+  border: 1px solid rgba(255,255,255,.10);
+  background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+}
+.planCard--featured{
+  border-color: rgba(20,184,166,.42);
+  background:
+    radial-gradient(900px 300px at 30% -15%, rgba(20,184,166,.22), transparent 60%),
+    linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+}
+.planCard__tag{
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(231,221,207,.92);
+}
+.planCard__title{
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.1;
+}
+.planCard__subtitle{
+  margin: 0;
+  color: var(--muted);
+}
+.planCard__price{
+  margin: 8px 0 0;
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -.04em;
+}
+.planCard__price span{
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.planCard__list{
+  margin: 6px 0 0;
+  padding-left: 18px;
+  color: rgba(246,246,246,.82);
+}
+.planCard__list li{
+  margin: 8px 0;
+}
+
 /* Contact */
 .contactGrid{
   display:grid;
@@ -731,6 +790,7 @@ h1{
   .hero__grid{ grid-template-columns: 1fr; }
   .aboutSnap__panel{ grid-template-columns: 1fr; padding: 0; }
   .aboutSnap__media{ width: min(100%, 260px); justify-self:start; }
+  .plansGrid{ grid-template-columns: 1fr; }
   .cards{ grid-template-columns: 1fr; }
   .stories{ grid-template-columns: 1fr; }
   .callout{ grid-template-columns: 1fr; }

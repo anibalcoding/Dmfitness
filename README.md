@@ -1,28 +1,17 @@
-# Dmfitness
+
 # DM Fit Coaching Website (dmfitcoaching.com)
-
-A clean, minimal, modern marketing site inspired by the look/structure of caliberstrong.com — built using **only HTML, CSS, and JavaScript** (no frameworks).
-
-This site is designed to drive conversions for:
-- **Free 15-minute virtual consultations**
-- **$150/month online fitness + nutrition coaching membership**
-- Coaching delivered through **Everfit**
-- Booking via **Calendly** (embed-ready)
-
----
-
 ## ✅ What Was Created
 
 ### Pages (Multi-page site)
+## Client Requested features. 
 - **index.html**
   - Hero section (primary CTA: book a consult)
   - “Why DMFit” value props
   - “How it works” steps
   - Membership callout with pricing
-  - Placeholder social proof/testimonials
+  - Placeholder social proof/testimonials (Waiting on his real testimonials)
   - FAQ accordion
-  - Email capture form (front-end demo)
-  - Pricing modal (opens from hero “View pricing” button)
+  - Email capture form
 
 - **about.html**
   - Coach bio layout for Diego
@@ -30,9 +19,9 @@ This site is designed to drive conversions for:
   - CTA to book consult
 
 - **book.html**
-  - **Calendly embed placeholder**
+  - **Calendly embed placeholder** (waiting on client for log in)
   - CTA reminders for membership after consult
-  - Notes included for swapping to official Calendly widget if preferred
+
 
 - **contact.html**
   - Contact form (front-end demo)
@@ -64,40 +53,19 @@ This site is designed to drive conversions for:
 
 ---
 
-## 🧱 How It Was Built (High Level)
+## Ideas based on client feedback
 
 ### Tech
-- **HTML** for structure and content sections
-- **CSS** for layout, typography, components, responsiveness
-- **JavaScript** for light interactivity (menu, accordion, modal, basic forms)
+- **HTML** 
+- **CSS** 
+- **JavaScript** 
 
-### Design Approach (Inspired by CaliberStrong)
-- Minimal, premium look with strong contrast
-- Clear hierarchy: **headline → benefit → CTA**
-- Simple offer positioning (1 plan)
-- Conversion-focused sections:
-  - Value props
-  - “How it works”
-  - FAQ
-  - CTA bands
-  - Booking emphasis
+### Design Approach (Client liked CaliberStrong website, I focued on making something similar but more modern)
+
 
 ---
 
-## 🚀 How to Run Locally
 
-### Option A (Simple)
-Just open `index.html` in your browser.
 
-### Option B (Recommended for testing)
-Use a local server so everything behaves like a real site.
 
-**VS Code Live Server**
-1. Open folder in VS Code  
-2. Install the “Live Server” extension  
-3. Right click `index.html` → “Open with Live Server”
-
----
-
-## 📁 File Structure
 

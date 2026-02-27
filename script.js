@@ -56,28 +56,28 @@
     });
   });
 
-  // Pricing modal
-  const pricingModal = document.getElementById("pricingModal");
-  const openPricing = document.getElementById("openPricing");
+  // Pricing modal (Removed based on client feedback, but leaving code here commented in case he wants to add it back in the future)
+  // const pricingModal = document.getElementById("pricingModal");
+  // const openPricing = document.getElementById("openPricing");
 
-  function setModal(open) {
-    if (!pricingModal) return;
-    pricingModal.classList.toggle("isOpen", open);
-    pricingModal.setAttribute("aria-hidden", String(!open));
-    document.body.style.overflow = open ? "hidden" : "";
-  }
+  // function setModal(open) {
+  //   if (!pricingModal) return;
+  //   pricingModal.classList.toggle("isOpen", open);
+  //   pricingModal.setAttribute("aria-hidden", String(!open));
+  //   document.body.style.overflow = open ? "hidden" : "";
+  // }
 
-  if (openPricing && pricingModal) {
-    openPricing.addEventListener("click", () => setModal(true));
-    pricingModal.addEventListener("click", (e) => {
-      const t = e.target;
-      if (!t) return;
-      if (t.hasAttribute("data-close")) setModal(false);
-    });
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setModal(false);
-    });
-  }
+  // if (openPricing && pricingModal) {
+  //   openPricing.addEventListener("click", () => setModal(true));
+  //   pricingModal.addEventListener("click", (e) => {
+  //     const t = e.target;
+  //     if (!t) return;
+  //     if (t.hasAttribute("data-close")) setModal(false);
+  //   });
+  //   window.addEventListener("keydown", (e) => {
+  //     if (e.key === "Escape") setModal(false);
+  //   });
+  // }
 
   // Lead form (front-end only)
   const leadForm = document.getElementById("leadForm");
