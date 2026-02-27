@@ -46,10 +46,31 @@ img{ max-width: 100%; display:block; }
 
 /* Topbar */
 .topbar{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   background: rgba(255,255,255,.03);
   border-bottom: 1px solid var(--line);
 }
+.topbar::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(20,184,166,.18) 42%,
+    rgba(231,221,207,.22) 50%,
+    rgba(20,184,166,.18) 58%,
+    transparent 100%
+  );
+  transform: translateX(-115%);
+  animation: topbarSweep 8s ease-in-out infinite;
+}
 .topbar__inner{
+  position: relative;
+  z-index: 1;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -58,9 +79,69 @@ img{ max-width: 100%; display:block; }
   font-size: 13px;
   color: var(--muted);
 }
+.topbar__inner > span{
+  animation: topbarItemIn .55s ease-out both;
+}
 .topbar__link{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
   color: var(--accent);
   font-weight: 600;
+  transition: transform .22s ease, color .22s ease;
+  animation: topbarItemIn .7s ease-out both;
+}
+.topbar__link::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s ease;
+}
+.topbar__link:hover{
+  transform: translateX(2px);
+}
+.topbar__link:hover::after{
+  transform: scaleX(1);
+}
+
+@keyframes topbarSweep{
+  0%{ transform: translateX(-115%); }
+  45%{ transform: translateX(115%); }
+  100%{ transform: translateX(115%); }
+}
+@keyframes topbarItemIn{
+  from{
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes heroFadeIn{
+  from{
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes heroGlowDrift{
+  0%{
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100%{
+    transform: translate3d(16px, 10px, 0) scale(1.06);
+  }
 }
 
 /* Header */
@@ -202,17 +283,57 @@ img{ max-width: 100%; display:block; }
 
 /* Hero */
 .hero{
-  padding: 64px 0 36px;
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0 42px;
+}
+.hero::before,
+.hero::after{
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero::before{
+  width: 620px;
+  height: 620px;
+  left: -240px;
+  top: -240px;
+  background: radial-gradient(circle, rgba(20,184,166,.22) 0%, rgba(20,184,166,0) 66%);
+  animation: heroGlowDrift 9s ease-in-out infinite alternate;
+}
+.hero::after{
+  width: 520px;
+  height: 520px;
+  right: -210px;
+  top: -120px;
+  background: radial-gradient(circle, rgba(231,221,207,.16) 0%, rgba(231,221,207,0) 64%);
+  animation: heroGlowDrift 11s ease-in-out infinite alternate-reverse;
 }
 .highlight{
   color: #14B8A6;
+  text-shadow: 0 0 20px rgba(20,184,166,.22);
 }
 .hero__grid{
+  position: relative;
+  z-index: 1;
   display:grid;
   grid-template-columns: 1.15fr .85fr;
   gap: 34px;
   align-items:center;
 }
+.hero__copy{
+  max-width: 760px;
+}
+.hero__copy > *{
+  opacity: 0;
+  transform: translateY(14px);
+  animation: heroFadeIn .72s cubic-bezier(.2,.65,.2,1) forwards;
+}
+.hero__copy > .eyebrow{ animation-delay: .08s; }
+.hero__copy > h1{ animation-delay: .18s; }
+.hero__copy > .lead{ animation-delay: .30s; }
+.hero__copy > .hero__cta{ animation-delay: .44s; }
 .eyebrow{
   font-size: 12px;
   letter-spacing: .16em;
@@ -235,6 +356,15 @@ h1{
   gap: 12px;
   flex-wrap: wrap;
   margin: 12px 0 16px;
+}
+.hero__cta .btn{
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.hero__cta .btn:hover{
+  transform: translateY(-2px);
+}
+.hero__cta .btn--primary:hover{
+  box-shadow: 0 10px 28px rgba(20,184,166,.28);
 }
 .hero__badges{
   display:flex;
@@ -803,4 +933,25 @@ h1{
 
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
+  .topbar::before{ animation: none; }
+  .topbar__inner > span,
+  .topbar__link{
+    animation: none;
+  }
+  .topbar__link,
+  .topbar__link::after{
+    transition: none;
+  }
+  .hero::before,
+  .hero::after{
+    animation: none;
+  }
+  .hero__copy > *{
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .hero__cta .btn{
+    transition: none;
+  }
 }
