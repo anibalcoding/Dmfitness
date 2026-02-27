@@ -83,10 +83,6 @@ img{ max-width: 100%; display:block; }
   padding: 14px 0;
   height: 8rem;
 }
-.header .header__inner.container{
-  width: 100%;
-}
-
 .brand{
   display:flex;
   align-items:center;
