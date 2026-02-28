@@ -112,30 +112,31 @@
     <section class="aboutSnap" id="about-preview">
       <div class="container">
         <article class="aboutSnap__panel">
-          <div class="aboutSnap__media">
+          <div class="aboutSnap__media" data-about-reveal>
             <img src="assests/diego-about-pic.jpg" alt="Coach Diego in a training session" />
           </div>
 
           <div class="aboutSnap__copy">
             <p class="eyebrow">ABOUT YOUR COACH</p>
-            <h2>Hi, I’m Diego.</h2>
-            <p>
-              I’ve spent 12+ years coaching beginners and experienced lifters to lose fat, build strength,
-              and stay consistent without extreme plans.
+            <h2 data-about-reveal>Hi, I’m Diego.</h2>
+            <p class="aboutSnap__text">
+              <span class="aboutSnap__line" data-about-reveal style="--line-index: 0;">I’ve spent 12+ years coaching beginners and experienced lifters to lose fat, build strength,</span>
+              <span class="aboutSnap__line" data-about-reveal style="--line-index: 1;">and stay consistent without extreme plans.</span>
             </p>
-            <p>
-              My coaching style is direct, practical, and accountability-first. You get a clear training and
-              nutrition strategy that fits your real schedule and life.
+            <p class="aboutSnap__text">
+              <span class="aboutSnap__line" data-about-reveal style="--line-index: 2;">My coaching style is direct, practical, and accountability-first.</span>
+              <span class="aboutSnap__line" data-about-reveal style="--line-index: 3;">You get a clear training and nutrition strategy that fits your real schedule and life.</span>
             </p>
 
-            <div class="aboutSnap__meta">
+            <div class="aboutSnap__meta" data-about-reveal>
               <span>12+ years coaching</span>
               <span>Fitness + nutrition</span>
               <span>Weekly accountability</span>
             </div>
 
             <div class="hero__cta">
-              <a class="btn btn--primary" href="about.html">Read full story</a>
+              <a class="btn btn--primary" data-about-reveal href="about.html">Read full story</a>
+              <a class="btn btn--ghost" data-about-reveal href="book.html">Book free consult</a>
             </div>
           </div>
         </article>

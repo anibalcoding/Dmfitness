@@ -1,4 +1,6 @@
 (function () {
+  document.documentElement.classList.add("has-js");
+
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -55,6 +57,32 @@
       });
     });
   });
+
+  // About section reveal sequence (per element on scroll)
+  const aboutRevealItems = document.querySelectorAll(".aboutSnap [data-about-reveal]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (aboutRevealItems.length) {
+    const revealItem = (el) => el.classList.add("isVisible");
+
+    if (prefersReducedMotion) {
+      aboutRevealItems.forEach(revealItem);
+    } else if ("IntersectionObserver" in window) {
+      const aboutObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            revealItem(entry.target);
+            aboutObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+      );
+      aboutRevealItems.forEach((item) => aboutObserver.observe(item));
+    } else {
+      aboutRevealItems.forEach(revealItem);
+    }
+  }
 
   // Pricing modal (Removed based on client feedback, but leaving code here commented in case he wants to add it back in the future)
   // const pricingModal = document.getElementById("pricingModal");
