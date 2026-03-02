@@ -84,6 +84,35 @@
     }
   }
 
+  // Why section alternating reveal (left -> right -> left)
+  const whyCards = document.querySelectorAll("#why .cards .card");
+
+  if (whyCards.length) {
+    whyCards.forEach((card, index) => {
+      card.style.setProperty("--why-delay", `${index * 170}ms`);
+    });
+
+    const revealWhyCard = (card) => card.classList.add("isVisible");
+
+    if (prefersReducedMotion) {
+      whyCards.forEach(revealWhyCard);
+    } else if ("IntersectionObserver" in window) {
+      const whyObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            revealWhyCard(entry.target);
+            whyObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.25, rootMargin: "0px 0px -8% 0px" }
+      );
+      whyCards.forEach((card) => whyObserver.observe(card));
+    } else {
+      whyCards.forEach(revealWhyCard);
+    }
+  }
+
   // Pricing modal (Removed based on client feedback, but leaving code here commented in case he wants to add it back in the future)
   // const pricingModal = document.getElementById("pricingModal");
   // const openPricing = document.getElementById("openPricing");

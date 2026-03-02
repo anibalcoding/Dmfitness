@@ -10,19 +10,17 @@
 <body>
   <header class="header header--simple" id="siteHeader">
     <div class="container header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__mark">DM</span>
-        <span class="brand__text">Fit Coaching</span>
+      <a class="brand" href="index.html" aria-label="DM Fit Coaching Home">
+        <img src="assests/diego-log.png" alt="DM Fit Coaching logo" height="200" width="200">
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
-        <a href="index.html#why">Why</a>
+        <a href="index.html#why">Why DMFit</a>
         <a href="index.html#how">How it works</a>
         <a href="index.html#faq">FAQs</a>
-        <a href="pricing.html" class="isActive">Pricing</a>
         <a href="about.html">About</a>
         <a class="btn btn--ghost" href="contact.html">Contact</a>
-        <a class="btn btn--primary" href="book.html">Start Consultation</a>
+        <a class="btn btn--top-button" href="book.html">Start Consultation</a>
       </nav>
 
       <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
@@ -32,10 +30,9 @@
 
     <div class="mobile" id="mobileNav" aria-hidden="true">
       <div class="container mobile__inner">
-        <a href="index.html#why" class="mobile__link">Why</a>
+        <a href="index.html#why" class="mobile__link">Why DMFit</a>
         <a href="index.html#how" class="mobile__link">How it works</a>
         <a href="index.html#faq" class="mobile__link">FAQs</a>
-        <a href="pricing.html" class="mobile__link">Pricing</a>
         <a href="about.html" class="mobile__link">About</a>
         <a href="contact.html" class="mobile__link">Contact</a>
         <a class="btn btn--primary mobile__cta" href="book.html">Start Consultation</a>
@@ -109,11 +106,9 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <div class="brand brand--footer">
-          <span class="brand__mark">DM</span>
-          <span class="brand__text">Fit Coaching</span>
-        </div>
-        <p class="micro">Online fitness + nutrition coaching with real accountability.</p>
+        <a class="footer__logoLink" href="index.html" aria-label="DM Fit Coaching Home">
+          <img class="footer__logo" src="assests/diego-log.png" alt="DM Fit Coaching logo" height="120" width="120">
+        </a>
       </div>
 
       <div class="footer__links">
@@ -126,7 +121,7 @@
 
       <div class="footer__cta">
         <a class="btn btn--primary" href="book.html">Book Consultation</a>
-        <p class="micro">© <span id="year"></span> DM Fit Coaching. All rights reserved.</p>
+        <p class="micro">© <span id="year"></span> All rights reserved.</p>
       </div>
     </div>
   </footer>

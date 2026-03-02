@@ -606,6 +606,25 @@ h1{
 .card p{ margin: 0; color: var(--muted); }
 .card--flat{ background: rgba(255,255,255,.02); }
 
+/* Why section alternating reveal */
+#why .cards .card{
+  --why-shift: -60px;
+  --why-delay: 0ms;
+}
+#why .cards .card:nth-child(even){
+  --why-shift: 60px;
+}
+.has-js #why .cards .card{
+  opacity: 0;
+  transform: translateX(var(--why-shift));
+}
+#why .cards .card.isVisible{
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity .6s ease-out, transform .6s ease-out;
+  transition-delay: var(--why-delay);
+}
+
 /* Steps */
 .steps{
   display:grid;
@@ -976,11 +995,20 @@ h1{
   align-items:start;
 }
 .footer__links{
-  display:grid;
-  gap: 10px;
+  display:flex;
+  flex-wrap: wrap;
+  align-items:center;
+  gap: 14px;
   color: var(--muted);
 }
-.brand--footer .brand__mark{ width: 34px; height: 34px; }
+.footer__logoLink{
+  display:inline-flex;
+  align-items:center;
+}
+.footer__logo{
+  width: 120px;
+  height: auto;
+}
 .footer__cta{ display:grid; gap: 10px; justify-items:start; }
 
 /* Responsive */
@@ -1031,5 +1059,10 @@ h1{
     transform: none;
     transition: none;
     animation: none;
+  }
+  #why .cards .card{
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
