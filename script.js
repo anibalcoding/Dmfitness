@@ -84,12 +84,14 @@
     }
   }
 
-  // Why section alternating reveal (left -> right -> left)
+  // Why section reveal
   const whyCards = document.querySelectorAll("#why .cards .card");
+  const whyCardsWrap = document.querySelector("#why .cards");
+  const desktopWhySequence = window.matchMedia("(min-width: 981px)").matches;
 
   if (whyCards.length) {
     whyCards.forEach((card, index) => {
-      card.style.setProperty("--why-delay", `${index * 170}ms`);
+      card.style.setProperty("--why-delay", `${index * 350}ms`);
     });
 
     const revealWhyCard = (card) => card.classList.add("isVisible");
@@ -97,17 +99,33 @@
     if (prefersReducedMotion) {
       whyCards.forEach(revealWhyCard);
     } else if ("IntersectionObserver" in window) {
-      const whyObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            revealWhyCard(entry.target);
-            whyObserver.unobserve(entry.target);
-          });
-        },
-        { threshold: 0.25, rootMargin: "0px 0px -8% 0px" }
-      );
-      whyCards.forEach((card) => whyObserver.observe(card));
+      if (desktopWhySequence && whyCardsWrap) {
+        const whySequenceObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              whyCards.forEach((card, index) => {
+                window.setTimeout(() => revealWhyCard(card), index * 150);
+              });
+              whySequenceObserver.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+        );
+        whySequenceObserver.observe(whyCardsWrap);
+      } else {
+        const whyObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              revealWhyCard(entry.target);
+              whyObserver.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.25, rootMargin: "0px 0px -8% 0px" }
+        );
+        whyCards.forEach((card) => whyObserver.observe(card));
+      }
     } else {
       whyCards.forEach(revealWhyCard);
     }

@@ -606,23 +606,98 @@ h1{
 .card p{ margin: 0; color: var(--muted); }
 .card--flat{ background: rgba(255,255,255,.02); }
 
-/* Why section alternating reveal */
+/* Pillar cards (index why section) */
+.cards--pillars{
+  --pillar-gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--pillar-gap);
+}
+#why .cards--pillars .card{
+  position: relative;
+  overflow: visible;
+  padding: 16px 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(231,221,207,.16);
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(231,176,115,.10), transparent 58%),
+    linear-gradient(170deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+}
+#why .cards--pillars .card h3{
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+#why .cards--pillars .card p{
+  color: rgba(246,246,246,.76);
+}
+#why .cards--pillars .card:not(:last-child)::after{
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: calc(100% + 2px);
+  width: calc(var(--pillar-gap) - 4px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(231,176,115,.56), rgba(231,176,115,.14));
+}
+#why .cards--pillars .card:not(:last-child)::before{
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: calc(100% + var(--pillar-gap) - 3px);
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(231,176,115,.92);
+  box-shadow: 0 0 0 2px rgba(11,11,11,.88), 0 0 14px rgba(231,176,115,.44);
+}
+.pillarTop{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: rgba(231,176,115,.95);
+}
+.pillarTop svg{
+  width: 20px;
+  height: 20px;
+  color: currentColor;
+  flex: 0 0 auto;
+}
+.pillarNum{
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+.pillarLine{
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(231,176,115,.82), rgba(231,176,115,.16));
+}
+
+/* Why section reveal */
 #why .cards .card{
-  --why-shift: -60px;
+  --why-x: -60px;
+  --why-y: 0px;
   --why-delay: 0ms;
 }
 #why .cards .card:nth-child(even){
-  --why-shift: 60px;
+  --why-x: 60px;
 }
 .has-js #why .cards .card{
   opacity: 0;
-  transform: translateX(var(--why-shift));
+  transform: translate(var(--why-x), var(--why-y));
 }
 #why .cards .card.isVisible{
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity .6s ease-out, transform .6s ease-out;
+  transform: translate(0, 0);
+  transition: opacity .58s ease-out, transform .58s ease-out;
   transition-delay: var(--why-delay);
+}
+@media (min-width: 981px){
+  #why .cards--pillars .card{
+    --why-x: 0px;
+    --why-y: 14px;
+  }
 }
 
 /* Steps */
@@ -1011,6 +1086,16 @@ h1{
 }
 .footer__cta{ display:grid; gap: 10px; justify-items:start; }
 
+@media (max-width: 1200px){
+  .cards--pillars{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #why .cards--pillars .card::before,
+  #why .cards--pillars .card::after{
+    display:none;
+  }
+}
+
 /* Responsive */
 @media (max-width: 980px){
   .nav{ display:none; }
@@ -1022,6 +1107,29 @@ h1{
   .aboutSnap__media{ width: min(100%, 260px); justify-self:start; }
   .plansGrid{ grid-template-columns: 1fr; }
   .cards{ grid-template-columns: 1fr; }
+  .cards--pillars{
+    gap: 34px;
+    justify-items: center;
+  }
+  #why .cards--pillars .card{
+    width: min(100%, 560px);
+    min-height: 190px;
+  }
+  #why .cards--pillars .card:not(:last-child)::after{
+    display:block;
+    top: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 22px;
+    background: linear-gradient(180deg, rgba(231,176,115,.58), rgba(231,176,115,.18));
+  }
+  #why .cards--pillars .card:not(:last-child)::before{
+    display:block;
+    top: calc(100% + 28px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .stories{ grid-template-columns: 1fr; }
   .callout{ grid-template-columns: 1fr; }
   .contactGrid{ grid-template-columns: 1fr; }
