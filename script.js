@@ -157,27 +157,66 @@
   }
 
   // Pricing modal (Removed based on client feedback, but leaving code here commented in case he wants to add it back in the future)
-  // const pricingModal = document.getElementById("pricingModal");
-  // const openPricing = document.getElementById("openPricing");
+  const pricingModal = document.getElementById("pricingModal");
+  const openPricing = document.getElementById("openPricing");
+  const modalDuration = prefersReducedMotion ? 0 : 940;
+  let modalTimer = null;
 
-  // function setModal(open) {
-  //   if (!pricingModal) return;
-  //   pricingModal.classList.toggle("isOpen", open);
-  //   pricingModal.setAttribute("aria-hidden", String(!open));
-  //   document.body.style.overflow = open ? "hidden" : "";
-  // }
+  function setModal(open) {
+    if (!pricingModal) return;
 
-  // if (openPricing && pricingModal) {
-  //   openPricing.addEventListener("click", () => setModal(true));
-  //   pricingModal.addEventListener("click", (e) => {
-  //     const t = e.target;
-  //     if (!t) return;
-  //     if (t.hasAttribute("data-close")) setModal(false);
-  //   });
-  //   window.addEventListener("keydown", (e) => {
-  //     if (e.key === "Escape") setModal(false);
-  //   });
-  // }
+    if (modalTimer) {
+      window.clearTimeout(modalTimer);
+      modalTimer = null;
+    }
+
+    if (open) {
+      pricingModal.classList.remove("isClosing");
+      pricingModal.classList.add("isVisible");
+      pricingModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      if (modalDuration === 0) {
+        pricingModal.classList.add("isOpen");
+      } else {
+        window.requestAnimationFrame(() => {
+          pricingModal.classList.add("isOpen");
+        });
+      }
+      return;
+    }
+
+    pricingModal.classList.remove("isOpen");
+    pricingModal.classList.add("isClosing");
+    pricingModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    const finishClose = () => {
+      if (!pricingModal) return;
+      pricingModal.classList.remove("isClosing", "isVisible");
+    };
+
+    if (modalDuration === 0) {
+      finishClose();
+    } else {
+      modalTimer = window.setTimeout(finishClose, modalDuration);
+    }
+  }
+
+  if (openPricing && pricingModal) {
+    openPricing.addEventListener("click", (e) => {
+      e.preventDefault();
+      setModal(true);
+    });
+    pricingModal.addEventListener("click", (e) => {
+      const t = e.target;
+      if (!t) return;
+      if (t.hasAttribute("data-close")) setModal(false);
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setModal(false);
+    });
+  }
 
   // Lead form (front-end only)
   const leadForm = document.getElementById("leadForm");
