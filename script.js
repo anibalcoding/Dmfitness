@@ -84,6 +84,31 @@
     }
   }
 
+  // Why section heading reveal
+  const whyHeadItems = document.querySelectorAll("#why .section__head h2, #why .section__head p");
+
+  if (whyHeadItems.length) {
+    const revealWhyHeadItem = (el) => el.classList.add("isVisible");
+
+    if (prefersReducedMotion) {
+      whyHeadItems.forEach(revealWhyHeadItem);
+    } else if ("IntersectionObserver" in window) {
+      const whyHeadObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            revealWhyHeadItem(entry.target);
+            whyHeadObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.3, rootMargin: "0px 0px -8% 0px" }
+      );
+      whyHeadItems.forEach((item) => whyHeadObserver.observe(item));
+    } else {
+      whyHeadItems.forEach(revealWhyHeadItem);
+    }
+  }
+
   // Why section reveal
   const whyCards = document.querySelectorAll("#why .cards .card");
   const whyCardsWrap = document.querySelector("#why .cards");
