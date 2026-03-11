@@ -156,6 +156,61 @@
     }
   }
 
+  // How section steps reveal
+  const howSteps = document.querySelectorAll("#how .step");
+
+  if (howSteps.length) {
+    howSteps.forEach((step, index) => {
+      step.style.setProperty("--how-step-delay", `${index * 120}ms`);
+    });
+
+    const revealHowStep = (step) => step.classList.add("isVisible");
+
+    if (prefersReducedMotion) {
+      howSteps.forEach(revealHowStep);
+    } else if ("IntersectionObserver" in window) {
+      const howObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            revealHowStep(entry.target);
+            howObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.25, rootMargin: "0px 0px -10% 0px" }
+      );
+
+      howSteps.forEach((step) => howObserver.observe(step));
+    } else {
+      howSteps.forEach(revealHowStep);
+    }
+  }
+
+  // How section callout reveal
+  const howCallout = document.querySelector("#how .callout");
+
+  if (howCallout) {
+    const revealHowCallout = () => howCallout.classList.add("isVisible");
+
+    if (prefersReducedMotion) {
+      revealHowCallout();
+    } else if ("IntersectionObserver" in window) {
+      const howCalloutObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            revealHowCallout();
+            howCalloutObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.22, rootMargin: "0px 0px -10% 0px" }
+      );
+      howCalloutObserver.observe(howCallout);
+    } else {
+      revealHowCallout();
+    }
+  }
+
   // Pricing modal (Removed based on client feedback, but leaving code here commented in case he wants to add it back in the future)
   const pricingModal = document.getElementById("pricingModal");
   const openPricing = document.getElementById("openPricing");
