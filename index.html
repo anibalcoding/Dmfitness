@@ -63,7 +63,7 @@
 
           <div class="hero__cta">
             <a class="btn btn--primary" href="book.html">Book Free 15-Min Consultation</a>
-            <button class="btn btn--ghost" id="openPricing" type="button">View pricing</button>
+            <button class="btn btn--ghost" id="openQuiz" type="button">Take the quiz →</button>
           </div>
 
 
@@ -112,7 +112,7 @@
       <div class="container">
         <article class="aboutSnap__panel">
           <div class="aboutSnap__media" data-about-reveal>
-            <img src="assests/diego-about-pic.jpg" alt="Coach Diego in a training session" />
+            <img src="assests/Diego-ai.png" alt="Coach Diego in a training session" />
           </div>
 
           <div class="aboutSnap__copy">
@@ -130,7 +130,6 @@
             <div class="aboutSnap__meta" data-about-reveal>
               <span>12+ years coaching</span>
               <span>Fitness + nutrition</span>
-              <span>Weekly accountability</span>
             </div>
 
             <div class="hero__cta">
@@ -278,27 +277,56 @@ DM Fit Coaching builds the structure. You execute it. The results follow.
       </div>
     </section>
 
-    <!-- Social proof / success -->
-    <section class="section" id="stories">
+    <!-- Reviews -->
+    <section class="section" id="reviews">
       <div class="container">
         <div class="section__head">
-          <h2>Real coaching. Real progress.</h2>
-          <p>Replace these placeholders with real transformations, reviews, or screenshots later.</p>
+          <h2>What Clients Are Saying</h2>
+          <p>Real people. Real results. No fluff.</p>
         </div>
 
-        <div class="stories">
-          <a class="story" href="book.html">
-            <p class="story__quote">“I stopped guessing. The plan was clear and I stayed consistent.”</p>
-            <p class="story__meta">— Client, lost 12 lbs</p>
-          </a>
-          <a class="story" href="book.html">
-            <p class="story__quote">“The accountability was everything. I actually followed through.”</p>
-            <p class="story__meta">— Client, better energy</p>
-          </a>
-          <a class="story" href="book.html">
-            <p class="story__quote">“I finally understand food. No more myths, just results.”</p>
-            <p class="story__meta">— Client, lifestyle balance</p>
-          </a>
+        <div class="reviews__grid">
+          <article class="reviewCard">
+            <div class="reviewCard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="reviewCard__quote">
+              "Diego completely changed how I approach training. I lost 18 lbs in 3 months without feeling like I was starving. The weekly check-ins kept me honest and on track."
+            </blockquote>
+            <footer class="reviewCard__footer">
+              <div class="reviewCard__avatar">JM</div>
+              <div>
+                <div class="reviewCard__name">James M.</div>
+                <div class="reviewCard__meta">Client · 3 months</div>
+              </div>
+            </footer>
+          </article>
+
+          <article class="reviewCard">
+            <div class="reviewCard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="reviewCard__quote">
+              "I've tried other coaches before but this was different. Diego actually looks at your data and adjusts. I finally understand how to eat for my goals."
+            </blockquote>
+            <footer class="reviewCard__footer">
+              <div class="reviewCard__avatar">SR</div>
+              <div>
+                <div class="reviewCard__name">Sofia R.</div>
+                <div class="reviewCard__meta">Client · 5 months</div>
+              </div>
+            </footer>
+          </article>
+
+          <article class="reviewCard">
+            <div class="reviewCard__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="reviewCard__quote">
+              "Best investment I've made for my health. The Everfit app makes everything simple, and Diego's response time is incredible. I always feel supported."
+            </blockquote>
+            <footer class="reviewCard__footer">
+              <div class="reviewCard__avatar">TK</div>
+              <div>
+                <div class="reviewCard__name">Tyler K.</div>
+                <div class="reviewCard__meta">Client · 2 months</div>
+              </div>
+            </footer>
+          </article>
         </div>
       </div>
     </section>
@@ -313,7 +341,7 @@ DM Fit Coaching builds the structure. You execute it. The results follow.
 
         <div class="faq" data-accordion>
           <button class="faq__q" aria-expanded="false">
-            What’s included in the $150/month membership?
+            What’s included in the $175/month membership?
             <span class="faq__icon">+</span>
           </button>
           <div class="faq__a">
@@ -375,6 +403,78 @@ DM Fit Coaching builds the structure. You execute it. The results follow.
       </div>
     </section>
   </main>
+
+  <!-- Quiz modal -->
+  <div class="modal" id="quizModal" aria-hidden="true" role="dialog" aria-labelledby="quizTitle">
+    <div class="modal__backdrop" data-quiz-close></div>
+    <div class="modal__panel quiz__panel" role="document">
+      <div class="modal__head">
+        <div class="quiz__headInner">
+          <div class="quiz__progress" id="quizProgress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="quiz__progressBar" id="quizProgressBar"></div>
+          </div>
+          <p class="quiz__stepLabel" id="quizStepLabel">Step 1 of 4</p>
+        </div>
+        <button class="iconBtn" aria-label="Close quiz" data-quiz-close>✕</button>
+      </div>
+
+      <div class="modal__body quiz__body">
+
+        <!-- Step 1 -->
+        <div class="quiz__step" data-step="1">
+          <h3 id="quizTitle" class="quiz__q">What's your primary goal right now?</h3>
+          <div class="quiz__options">
+            <button class="quiz__opt" data-next="2">🔥 Lose fat and get leaner</button>
+            <button class="quiz__opt" data-next="2">💪 Build muscle and get stronger</button>
+            <button class="quiz__opt" data-next="2">⚡ Both — lose fat and build muscle</button>
+            <button class="quiz__opt" data-next="2">🌱 Improve overall health and energy</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz__step" data-step="2" hidden>
+          <h3 class="quiz__q">How long have you been training consistently?</h3>
+          <div class="quiz__options">
+            <button class="quiz__opt" data-next="3">Just getting started</button>
+            <button class="quiz__opt" data-next="3">Less than 6 months</button>
+            <button class="quiz__opt" data-next="3">6 months – 2 years</button>
+            <button class="quiz__opt" data-next="3">2+ years but not seeing results</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz__step" data-step="3" hidden>
+          <h3 class="quiz__q">What's your biggest obstacle right now?</h3>
+          <div class="quiz__options">
+            <button class="quiz__opt" data-next="4">I don't know what to eat</button>
+            <button class="quiz__opt" data-next="4">I struggle to stay consistent</button>
+            <button class="quiz__opt" data-next="4">I train but don't see results</button>
+            <button class="quiz__opt" data-next="4">I don't have a clear plan</button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="quiz__step" data-step="4" hidden>
+          <h3 class="quiz__q">How ready are you to start?</h3>
+          <div class="quiz__options">
+            <button class="quiz__opt" data-next="result">Ready to start now</button>
+            <button class="quiz__opt" data-next="result">Within the next month</button>
+            <button class="quiz__opt" data-next="result">Just exploring my options</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="quiz__step quiz__result" data-step="result" hidden>
+          <div class="quiz__resultIcon">✅</div>
+          <h3 class="quiz__q">You're a great fit for DM Fit Coaching.</h3>
+          <p class="quiz__resultText">Based on your answers, Diego's 1-on-1 system is built exactly for where you are right now. The next step is a free 15-minute consult — no commitment required.</p>
+          <a class="btn btn--primary btn--wide quiz__resultBtn" href="book.html">Book Your Free Consult →</a>
+          <p class="quiz__resultMicro">Takes 2 minutes to schedule. No credit card needed.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Pricing modal -->
   <div class="modal" id="pricingModal" aria-hidden="true" role="dialog" aria-labelledby="pricingTitle">

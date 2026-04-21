@@ -273,6 +273,78 @@
     });
   }
 
+  // Quiz modal
+  const quizModal = document.getElementById("quizModal");
+  const openQuiz = document.getElementById("openQuiz");
+  const quizProgressBar = document.getElementById("quizProgressBar");
+  const quizStepLabel = document.getElementById("quizStepLabel");
+  const totalQuizSteps = 4;
+
+  function setQuizModal(open) {
+    if (!quizModal) return;
+    if (open) {
+      quizModal.classList.remove("isClosing");
+      quizModal.classList.add("isVisible");
+      quizModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      window.requestAnimationFrame(() => quizModal.classList.add("isOpen"));
+      goToQuizStep(1);
+    } else {
+      quizModal.classList.remove("isOpen");
+      quizModal.classList.add("isClosing");
+      quizModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      window.setTimeout(() => quizModal.classList.remove("isClosing", "isVisible"), 340);
+    }
+  }
+
+  function goToQuizStep(step) {
+    if (!quizModal) return;
+    const steps = quizModal.querySelectorAll(".quiz__step");
+    steps.forEach((el) => {
+      const s = el.getAttribute("data-step");
+      el.hidden = s !== String(step);
+    });
+
+    const isResult = step === "result";
+    const currentNum = isResult ? totalQuizSteps : step;
+    const pct = isResult ? 100 : Math.round(((step - 1) / totalQuizSteps) * 100);
+
+    if (quizProgressBar) quizProgressBar.style.width = pct + "%";
+    if (quizStepLabel) {
+      quizStepLabel.textContent = isResult
+        ? "Done!"
+        : `Step ${currentNum} of ${totalQuizSteps}`;
+    }
+    if (quizProgressBar) {
+      quizProgressBar.closest("[role='progressbar']").setAttribute("aria-valuenow", pct);
+    }
+  }
+
+  if (openQuiz && quizModal) {
+    openQuiz.addEventListener("click", (e) => {
+      e.preventDefault();
+      setQuizModal(true);
+    });
+
+    quizModal.addEventListener("click", (e) => {
+      const t = e.target;
+      if (!t) return;
+      if (t.hasAttribute("data-quiz-close") || t.closest("[data-quiz-close]")) {
+        setQuizModal(false);
+        return;
+      }
+      if (t.matches(".quiz__opt")) {
+        const next = t.getAttribute("data-next");
+        if (next) goToQuizStep(next === "result" ? "result" : Number(next));
+      }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && quizModal.classList.contains("isOpen")) setQuizModal(false);
+    });
+  }
+
   // Lead form (front-end only)
   const leadForm = document.getElementById("leadForm");
   const leadEmail = document.getElementById("leadEmail");
