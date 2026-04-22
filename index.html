@@ -27,7 +27,6 @@
         <a href="#why">Why DMFit</a>
         <a href="#how">How it works</a>
         <a href="#faq">FAQs</a>
-        <a href="about.html">About</a>
         <a class="btn btn--ghost" href="contact.html">Contact</a>
         <a class="btn btn--top-button" href="book.html">Start Consultation</a>
       </nav>
@@ -43,7 +42,6 @@
         <a href="#why" class="mobile__link">Why DMFit</a>
         <a href="#how" class="mobile__link">How it works</a>
         <a href="#faq" class="mobile__link">FAQs</a>
-        <a href="about.html" class="mobile__link">About</a>
         <a href="contact.html" class="mobile__link">Contact</a>
         <a class="btn btn--primary mobile__cta" href="book.html">Start Consultation</a>
       </div>
@@ -407,71 +405,68 @@ DM Fit Coaching builds the structure. You execute it. The results follow.
   <!-- Quiz modal -->
   <div class="modal" id="quizModal" aria-hidden="true" role="dialog" aria-labelledby="quizTitle">
     <div class="modal__backdrop" data-quiz-close></div>
-    <div class="modal__panel quiz__panel" role="document">
-      <div class="modal__head">
-        <div class="quiz__headInner">
-          <div class="quiz__progress" id="quizProgress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-            <div class="quiz__progressBar" id="quizProgressBar"></div>
-          </div>
-          <p class="quiz__stepLabel" id="quizStepLabel">Step 1 of 4</p>
-        </div>
-        <button class="iconBtn" aria-label="Close quiz" data-quiz-close>✕</button>
+    <div class="quiz__panel" role="document">
+
+      <div class="quiz__bar">
+        <div class="quiz__barFill" id="quizProgressBar"></div>
       </div>
 
-      <div class="modal__body quiz__body">
+      <button class="quiz__close" aria-label="Close quiz" data-quiz-close>✕</button>
 
-        <!-- Step 1 -->
-        <div class="quiz__step" data-step="1">
-          <h3 id="quizTitle" class="quiz__q">What's your primary goal right now?</h3>
-          <div class="quiz__options">
-            <button class="quiz__opt" data-next="2">🔥 Lose fat and get leaner</button>
-            <button class="quiz__opt" data-next="2">💪 Build muscle and get stronger</button>
-            <button class="quiz__opt" data-next="2">⚡ Both — lose fat and build muscle</button>
-            <button class="quiz__opt" data-next="2">🌱 Improve overall health and energy</button>
+      <div class="quiz__body">
+        <div class="quiz__slides" id="quizSlides">
+
+          <div class="quiz__slide" data-step="1">
+            <p class="quiz__label">1 of 4</p>
+            <h2 id="quizTitle" class="quiz__q">What's your main goal?</h2>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-next="2">Lose fat and get leaner</button>
+              <button class="quiz__opt" data-next="2">Build muscle and get stronger</button>
+              <button class="quiz__opt" data-next="2">Both — lose fat and build muscle</button>
+              <button class="quiz__opt" data-next="2">Improve overall health</button>
+            </div>
           </div>
-        </div>
 
-        <!-- Step 2 -->
-        <div class="quiz__step" data-step="2" hidden>
-          <h3 class="quiz__q">How long have you been training consistently?</h3>
-          <div class="quiz__options">
-            <button class="quiz__opt" data-next="3">Just getting started</button>
-            <button class="quiz__opt" data-next="3">Less than 6 months</button>
-            <button class="quiz__opt" data-next="3">6 months – 2 years</button>
-            <button class="quiz__opt" data-next="3">2+ years but not seeing results</button>
+          <div class="quiz__slide" data-step="2">
+            <p class="quiz__label">2 of 4</p>
+            <h2 class="quiz__q">How long have you been training?</h2>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-next="3">Just getting started</button>
+              <button class="quiz__opt" data-next="3">Less than 6 months</button>
+              <button class="quiz__opt" data-next="3">6 months – 2 years</button>
+              <button class="quiz__opt" data-next="3">2+ years, not seeing results</button>
+            </div>
           </div>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="quiz__step" data-step="3" hidden>
-          <h3 class="quiz__q">What's your biggest obstacle right now?</h3>
-          <div class="quiz__options">
-            <button class="quiz__opt" data-next="4">I don't know what to eat</button>
-            <button class="quiz__opt" data-next="4">I struggle to stay consistent</button>
-            <button class="quiz__opt" data-next="4">I train but don't see results</button>
-            <button class="quiz__opt" data-next="4">I don't have a clear plan</button>
+          <div class="quiz__slide" data-step="3">
+            <p class="quiz__label">3 of 4</p>
+            <h2 class="quiz__q">What's your biggest challenge?</h2>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-next="4">I don't know what to eat</button>
+              <button class="quiz__opt" data-next="4">I can't stay consistent</button>
+              <button class="quiz__opt" data-next="4">I train but don't see results</button>
+              <button class="quiz__opt" data-next="4">I don't have a plan</button>
+            </div>
           </div>
-        </div>
 
-        <!-- Step 4 -->
-        <div class="quiz__step" data-step="4" hidden>
-          <h3 class="quiz__q">How ready are you to start?</h3>
-          <div class="quiz__options">
-            <button class="quiz__opt" data-next="result">Ready to start now</button>
-            <button class="quiz__opt" data-next="result">Within the next month</button>
-            <button class="quiz__opt" data-next="result">Just exploring my options</button>
+          <div class="quiz__slide" data-step="4">
+            <p class="quiz__label">4 of 4</p>
+            <h2 class="quiz__q">How soon do you want to start?</h2>
+            <div class="quiz__options">
+              <button class="quiz__opt" data-next="result">Right now</button>
+              <button class="quiz__opt" data-next="result">Within the next month</button>
+              <button class="quiz__opt" data-next="result">Just exploring my options</button>
+            </div>
           </div>
-        </div>
 
-        <!-- Result -->
-        <div class="quiz__step quiz__result" data-step="result" hidden>
-          <div class="quiz__resultIcon">✅</div>
-          <h3 class="quiz__q">You're a great fit for DM Fit Coaching.</h3>
-          <p class="quiz__resultText">Based on your answers, Diego's 1-on-1 system is built exactly for where you are right now. The next step is a free 15-minute consult — no commitment required.</p>
-          <a class="btn btn--primary btn--wide quiz__resultBtn" href="book.html">Book Your Free Consult →</a>
-          <p class="quiz__resultMicro">Takes 2 minutes to schedule. No credit card needed.</p>
-        </div>
+          <div class="quiz__slide quiz__result" data-step="result">
+            <p class="quiz__label">You're a great fit</p>
+            <h2 class="quiz__q">Ready when you are.</h2>
+            <p class="quiz__resultText">Book a free 15-minute call with Diego — no commitment, no pressure.</p>
+            <a class="btn btn--primary btn--wide" href="book.html">Book Your Free Consult</a>
+          </div>
 
+        </div>
       </div>
     </div>
   </div>

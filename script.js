@@ -277,8 +277,10 @@
   const quizModal = document.getElementById("quizModal");
   const openQuiz = document.getElementById("openQuiz");
   const quizProgressBar = document.getElementById("quizProgressBar");
-  const quizStepLabel = document.getElementById("quizStepLabel");
+  const quizSlides = document.getElementById("quizSlides");
   const totalQuizSteps = 4;
+
+  const stepOrder = ["1", "2", "3", "4", "result"];
 
   function setQuizModal(open) {
     if (!quizModal) return;
@@ -288,7 +290,7 @@
       quizModal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       window.requestAnimationFrame(() => quizModal.classList.add("isOpen"));
-      goToQuizStep(1);
+      slideTo("1");
     } else {
       quizModal.classList.remove("isOpen");
       quizModal.classList.add("isClosing");
@@ -298,27 +300,21 @@
     }
   }
 
-  function goToQuizStep(step) {
-    if (!quizModal) return;
-    const steps = quizModal.querySelectorAll(".quiz__step");
-    steps.forEach((el) => {
-      const s = el.getAttribute("data-step");
-      el.hidden = s !== String(step);
-    });
+  function slideTo(step) {
+    if (!quizSlides) return;
+    const index = stepOrder.indexOf(String(step));
+    if (index === -1) return;
+
+    if (prefersReducedMotion) {
+      quizSlides.style.transition = "none";
+    } else {
+      quizSlides.style.transition = "";
+    }
+    quizSlides.style.transform = `translateX(-${index * 100}%)`;
 
     const isResult = step === "result";
-    const currentNum = isResult ? totalQuizSteps : step;
-    const pct = isResult ? 100 : Math.round(((step - 1) / totalQuizSteps) * 100);
-
+    const pct = isResult ? 100 : Math.round(((index) / totalQuizSteps) * 100);
     if (quizProgressBar) quizProgressBar.style.width = pct + "%";
-    if (quizStepLabel) {
-      quizStepLabel.textContent = isResult
-        ? "Done!"
-        : `Step ${currentNum} of ${totalQuizSteps}`;
-    }
-    if (quizProgressBar) {
-      quizProgressBar.closest("[role='progressbar']").setAttribute("aria-valuenow", pct);
-    }
   }
 
   if (openQuiz && quizModal) {
@@ -336,7 +332,7 @@
       }
       if (t.matches(".quiz__opt")) {
         const next = t.getAttribute("data-next");
-        if (next) goToQuizStep(next === "result" ? "result" : Number(next));
+        if (next) slideTo(next);
       }
     });
 
