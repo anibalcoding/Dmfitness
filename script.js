@@ -281,10 +281,50 @@
   const totalQuizSteps = 4;
 
   const stepOrder = ["1", "2", "3", "4", "result"];
+  const quizAnswers = {};
+
+  const goalPhrases = {
+    "Lose fat and get leaner": "lose fat and get leaner",
+    "Build muscle and get stronger": "build muscle and get stronger",
+    "Both — lose fat and build muscle": "lose fat and build muscle at the same time",
+    "Improve overall health": "improve your overall health and energy"
+  };
+
+  const challengePhrases = {
+    "I don't know what to eat": "not knowing what to eat",
+    "I can't stay consistent": "staying consistent",
+    "I train but don't see results": "putting in the work but not seeing results",
+    "I don't have a plan": "not having a clear plan to follow"
+  };
+
+  const timelinePhrases = {
+    "Right now": "You're ready to start now — that's the best time.",
+    "Within the next month": "You're planning to start soon — let's make sure you hit the ground running.",
+    "Just exploring my options": "No pressure. A free call is the best way to see if this is right for you."
+  };
+
+  function buildResultCopy() {
+    const goal = goalPhrases[quizAnswers[1]] || "reach your goals";
+    const challenge = challengePhrases[quizAnswers[3]] || "staying on track";
+    const timeline = timelinePhrases[quizAnswers[4]] || "";
+
+    const msg = document.getElementById("quizResultMsg");
+    const answers = document.getElementById("quizResultAnswers");
+
+    if (msg) {
+      msg.textContent = `You want to ${goal}, and ${challenge} has been your biggest roadblock. That's exactly what Diego's coaching system is built around — removing the guesswork and building a structure that actually works for your life. ${timeline}`;
+    }
+
+    if (answers) {
+      const tags = [quizAnswers[1], quizAnswers[2], quizAnswers[3], quizAnswers[4]].filter(Boolean);
+      answers.innerHTML = tags.map((t) => `<span class="quiz__tag">${t}</span>`).join("");
+    }
+  }
 
   function setQuizModal(open) {
     if (!quizModal) return;
     if (open) {
+      Object.keys(quizAnswers).forEach((k) => delete quizAnswers[k]);
       quizModal.classList.remove("isClosing");
       quizModal.classList.add("isVisible");
       quizModal.setAttribute("aria-hidden", "false");
@@ -313,8 +353,10 @@
     quizSlides.style.transform = `translateX(-${index * 100}%)`;
 
     const isResult = step === "result";
-    const pct = isResult ? 100 : Math.round(((index) / totalQuizSteps) * 100);
+    const pct = isResult ? 100 : Math.round((index / totalQuizSteps) * 100);
     if (quizProgressBar) quizProgressBar.style.width = pct + "%";
+
+    if (isResult) buildResultCopy();
   }
 
   if (openQuiz && quizModal) {
@@ -332,6 +374,9 @@
       }
       if (t.matches(".quiz__opt")) {
         const next = t.getAttribute("data-next");
+        const slide = t.closest(".quiz__slide");
+        const stepNum = slide ? Number(slide.getAttribute("data-step")) : null;
+        if (stepNum) quizAnswers[stepNum] = t.textContent.trim();
         if (next) slideTo(next);
       }
     });
