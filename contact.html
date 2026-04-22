@@ -52,21 +52,18 @@
     <section class="section section--alt">
       <div class="container">
         <div class="contactGrid">
-          <div class="contactCard">
-            <h2>Message DM Fit Coaching</h2>
-            <p class="micro">This is a front-end form. Connect it to your backend or email service after launch.</p>
 
+          <div class="contactCard">
+            <h2>Send a message</h2>
             <form class="form" id="contactForm" novalidate>
               <div class="field">
                 <label for="name">Name</label>
                 <input id="name" name="name" type="text" placeholder="Your name" required />
               </div>
-
               <div class="field">
                 <label for="email">Email</label>
                 <input id="email" name="email" type="email" placeholder="you@email.com" required />
               </div>
-
               <div class="field">
                 <label for="goal">Primary goal</label>
                 <select id="goal" name="goal" required>
@@ -77,34 +74,50 @@
                   <option>General fitness guidance</option>
                 </select>
               </div>
-
               <div class="field">
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Tell us what you're struggling with..." required></textarea>
               </div>
-
               <button class="btn btn--primary btn--wide" type="submit">Send message</button>
               <p class="formMsg" id="contactMsg" aria-live="polite"></p>
             </form>
           </div>
 
           <aside class="contactAside">
-            <div class="card card--flat">
-              <h3>Email</h3>
-              <p><a href="mailto:dmfitness25@gmail.com">dmfitness25@gmail.com</a></p>
-            </div>
+            <div class="contactInfo">
+              
+              <h3 class="contactInfo__heading">Built around your life — not a generic template.</h3>
+              <p class="contactInfo__body">DM Fit Coaching is a 1-on-1 online coaching service focused on sustainable fat loss, strength, and real accountability. No cookie-cutter plans. No fluff. Just a system that works for your schedule, your body, and your goals.</p>
 
-            <div class="card card--flat">
-              <h3>Quick start</h3>
-              <p class="micro">Fastest path: book a free consult.</p>
-              <a class="btn btn--primary btn--wide" href="book.html">Book Free Consult</a>
-            </div>
+              <ul class="contactInfo__list">
+                <li>
+                  <span class="contactInfo__icon">✦</span>
+                  <span>Personalized training + nutrition plan</span>
+                </li>
+                <li>
+                  <span class="contactInfo__icon">✦</span>
+                  <span>Weekly 30-min performance review call</span>
+                </li>
+                <li>
+                  <span class="contactInfo__icon">✦</span>
+                  <span>Direct support inside Everfit</span>
+                </li>
+                <li>
+                  <span class="contactInfo__icon">✦</span>
+                  <span>Weekly progress report cards</span>
+                </li>
+                <li>
+                  <span class="contactInfo__icon">✦</span>
+                  <span>Month-to-month, no lock-in</span>
+                </li>
+              </ul>
 
-            <div class="card card--flat">
-              <h3>Membership</h3>
-              <p class="micro">$150/month • coaching delivered through Everfit</p>
+             
+
+              
             </div>
           </aside>
+
         </div>
       </div>
     </section>
@@ -127,7 +140,7 @@
       </div>
 
       <div class="footer__cta">
-        <a class="btn btn--primary" href="book.html">Book Consultation</a>
+        
         <p class="micro">© <span id="year"></span> All rights reserved.</p>
       </div>
     </div>

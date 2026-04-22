@@ -1239,6 +1239,59 @@ h1{
 }
 .contactAside{ display:grid; gap: 12px; }
 
+/* Contact info panel */
+.contactInfo{
+  position: sticky;
+  top: 100px;
+  display: grid;
+  gap: 28px;
+  padding: 32px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(91,182,178,.14);
+  background: linear-gradient(160deg, rgba(91,182,178,.07), rgba(91,182,178,.02));
+}
+.contactInfo__heading{
+  margin: 0;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+.contactInfo__body{
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.contactInfo__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(91,182,178,.10);
+}
+.contactInfo__list li{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  font-size: 14px;
+  color: rgba(230,238,240,.82);
+  border-bottom: 1px solid rgba(91,182,178,.08);
+}
+.contactInfo__icon{
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(91,182,178,.10);
+  border: 1px solid rgba(91,182,178,.18);
+  color: var(--accent);
+  font-size: 9px;
+  flex: 0 0 auto;
+}
+
 /* Modal */
 .modal{
   position: fixed;
